@@ -2,7 +2,7 @@
 
 namespace AccountingApp.Model
 {
-    public class UserModel
+    public class UserLoginModel
     {
         [Required]
         public string FirstName { get; set; }
@@ -10,7 +10,6 @@ namespace AccountingApp.Model
         public string Role { get; set; }
         [Required]
         [EmailAddress(ErrorMessage = "Email is required")]
-      
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }

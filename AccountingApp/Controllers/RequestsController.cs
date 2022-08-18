@@ -15,16 +15,19 @@ namespace AccountingApp.Controllers
         {
             this.requestRepository = requestRepository;
         }
-        [HttpPost("login")]
-        public async Task<IActionResult> AddUser([FromBody]SignUpModel signUpModel)
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsers()
         {
-            var user = await requestRepository.AddUserAsync(signUpModel);
-            if (user.Succeeded)
-            {
-                return Ok(user.Succeeded);
-            }
-            return Unauthorized();
+          
 
+        }
+
+        [HttpPost("users/authentication")]
+        public async Task<IActionResult> AddUserAunthentic([FromBody] UserLoginModel userLogin)
+        {
+           
+            
+          
         }
     }
 }

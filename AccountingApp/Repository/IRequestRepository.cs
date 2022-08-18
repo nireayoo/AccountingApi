@@ -5,6 +5,8 @@ namespace AccountingApp.Repository
 {
     public interface IRequestRepository
     {
-        Task<IdentityResult> AddUserAsync(SignUpModel signUpModel);
+        //Task<IdentityResult> AddUserAsync(SignUpModel signUpModel);
+        Task<List<UserLoginModel>> GetUserAsync();
+        Task<UserLoginModel> AddUserAsync(UserLoginModel userLogin);
     }
 }

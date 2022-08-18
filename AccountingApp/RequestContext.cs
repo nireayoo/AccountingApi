@@ -1,4 +1,5 @@
-﻿using AccountingApp.Model;
+﻿using AccountingApp.Data;
+using AccountingApp.Model;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,5 +11,6 @@ namespace AccountingApp
         {
 
         }
+        public DbSet<Login> Logins { get; set; }
     }
 }

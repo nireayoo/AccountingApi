@@ -5,23 +5,40 @@ namespace AccountingApp.Repository
 {
     public class RequestRepository : IRequestRepository
     {
-        private readonly UserManager<AppUser> userManager;
+        private readonly RequestContext context;
 
-        public RequestRepository(UserManager<AppUser> userManager)
+        public RequestRepository(RequestContext context)
         {
-            this.userManager = userManager;
+            this.context = context;
         }
 
-        public async Task<IdentityResult> AddUserAsync(SignUpModel signUpModel)
+        public async Task<List<UserLoginModel>> GetUserAsync()
         {
-            var user = new AppUser()
-            {
-                FirstName = signUpModel.FirstName,
-                LastName = signUpModel.LastName,
-                Email = signUpModel.Email,
-                Role = signUpModel.Role,
-            };
-            return await userManager.CreateAsync(user, signUpModel.Password);
+
+
         }
+        public async Task<UserLoginModel> AddUserAsync(UserLoginModel userLogin)
+        {
+            
+
+        }
+    //    private readonly UserManager<AppUser> userManager;
+
+    //    public RequestRepository(UserManager<AppUser> userManager)
+    //    {
+    //        this.userManager = userManager;
+    //    }
+
+    //    public async Task<IdentityResult> AddUserAsync(SignUpModel signUpModel)
+    //    {
+    //        var user = new AppUser()
+    //        {
+    //            FirstName = signUpModel.FirstName,
+    //            LastName = signUpModel.LastName,
+    //            Email = signUpModel.Email,
+    //            Role = signUpModel.Role,
+    //        };
+    //        return await userManager.CreateAsync(user, signUpModel.Password);
+        
     }
 }
