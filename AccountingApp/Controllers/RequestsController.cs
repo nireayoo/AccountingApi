@@ -15,19 +15,6 @@ namespace AccountingApp.Controllers
         {
             this.requestRepository = requestRepository;
         }
-        [HttpGet("users")]
-        public async Task<IActionResult> GetAllUsers()
-        {
-          
-
-        }
-
-        [HttpPost("users/authentication")]
-        public async Task<IActionResult> AddUserAunthentic([FromBody] UserLoginModel userLogin)
-        {
-           
-            
-          
-        }
+      
     }
 }
