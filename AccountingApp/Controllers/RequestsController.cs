@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AccountingApp.Controllers
 {
@@ -6,7 +7,11 @@ namespace AccountingApp.Controllers
     [ApiController]
     public class RequestsController : ControllerBase
     {
-       
+        [Authorize(Roles ="")]
+       public IActionResult Result()
+        {
+            return Ok("Hello");
+        }
       
     }
 }
