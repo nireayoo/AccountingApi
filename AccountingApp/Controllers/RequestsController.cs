@@ -1,7 +1,4 @@
-﻿using AccountingApp.Model;
-using AccountingApp.Repository;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace AccountingApp.Controllers
 {
@@ -9,12 +6,7 @@ namespace AccountingApp.Controllers
     [ApiController]
     public class RequestsController : ControllerBase
     {
-        private readonly IRequestRepository requestRepository;
-
-        public RequestsController(IRequestRepository requestRepository)
-        {
-            this.requestRepository = requestRepository;
-        }
+       
       
     }
 }

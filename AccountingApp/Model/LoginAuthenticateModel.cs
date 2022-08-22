@@ -2,7 +2,7 @@
 
 namespace AccountingApp.Model
 {
-    public class UserLoginModel
+    public class LoginAuthenticateModel
     {
         [Required]
         public string FirstName { get; set; }
