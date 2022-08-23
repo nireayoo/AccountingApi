@@ -1,5 +1,7 @@
 using AccountingApp;
+using AccountingApp.Helpers;
 using AccountingApp.Model;
+using AccountingApp.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +20,9 @@ builder.Services.AddDbContext<RequestContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 
 var app = builder.Build();
 
@@ -32,6 +37,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 app.UseAuthentication();
+app.UseMiddleware<JwtMiddleware>();
 
 
 app.MapControllers();
