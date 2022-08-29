@@ -12,10 +12,10 @@ namespace AccountingApp.Helpers
         private readonly RequestDelegate next;
         private readonly AppSettings appSettings;
 
-        public JwtMiddleware(RequestDelegate next, AppSettings appSettings)
+        public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
         {
             this.next = next;
-            this.appSettings = appSettings;
+            this.appSettings = appSettings.Value;
         }
 
         public async Task Invoke(HttpContext context, IUserServices userService)

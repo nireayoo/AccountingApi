@@ -8,5 +8,6 @@ namespace AccountingApp.Services
         LoginAuthentication Authenticate(AppUserRequest model);
         IEnumerable<Login> GetAll();
         Login GetById(int id);
+
     }
 }

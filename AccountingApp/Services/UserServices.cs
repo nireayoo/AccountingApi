@@ -12,19 +12,23 @@ namespace AccountingApp.Services
     //this class is where all the logic, validation of token takes place
     public class UserServices: IUserServices
     {
-        private static List<Login> users = new List<Login>
+        private readonly RequestContext context;
+        private readonly AppSettings appSettings;
+
+        public UserServices(RequestContext context, AppSettings appSettings)
+        {
+           
+            this.context = context;
+            this.appSettings = appSettings;
+        }
+
+        private List<Login> users = new List<Login>
         {
             //will still try this with a database
             new Login{LoginId = 1, FirstName = "Dry", LastName = "Rocks", Email= "mikerocks@yahoo.com", Password= "theboy2002", Role= "admin"}
 
         };
-        private readonly AppSettings appSettings;
-
-        public UserServices(AppSettings appSettings)
-        {
-            this.appSettings = appSettings;
-        }
-        //thring to generate the jwt token
+        //trying to generate the jwt token
         public LoginAuthentication Authenticate(AppUserRequest model)
         {
             var user = users.SingleOrDefault(x =>x.Email == model.Email && x.Password == model.Password);
@@ -34,16 +38,18 @@ namespace AccountingApp.Services
             return new LoginAuthentication(user, token);
 
          }
+        public Login GetById(int id)
+        {
+            return users.FirstOrDefault(x => x.LoginId == id);
+        }
+        
+
         public IEnumerable<Login> GetAll()
         {
             return users;
 
         }
-        public Login GetById(int id)
-        {
-            return users.FirstOrDefault(x => x.LoginId == id);
-        }
-
+       
         //tis class is a set of codes responsible for token generations
         private string generateJwtToken(Login user)
         {

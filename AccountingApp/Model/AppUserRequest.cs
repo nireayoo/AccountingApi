@@ -3,7 +3,7 @@
 namespace AccountingApp.Model
 {
     //this model is used for incoming requests, the user logs in with this model then it is passed into other methods to check for authentication
-    public class AppUserRequest 
+    public class AppUserRequest  //to authenticate request
     {
         [Required]
         [EmailAddress(ErrorMessage ="email is required")]
